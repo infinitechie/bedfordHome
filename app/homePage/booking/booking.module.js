@@ -12,6 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var core_module_1 = require('../../core/core.module');
 var common_1 = require('@angular/common');
+// import { AngularFireModule } from 'angularfire2';
 //Components
 var bookingTimes_component_1 = require('./bookingTimes/bookingTimes.component');
 var bookingServices_component_1 = require('./bookingServices/bookingServices.component');
