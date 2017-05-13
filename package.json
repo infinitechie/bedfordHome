@@ -1,0 +1,45 @@
+{
+  "name": "angular2-skeleton",
+  "version": "1.0.0",
+  "description": "Skeleton for further project use",
+  "scripts": {
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "lite": "lite-server",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w"
+  },
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "@angular/common": "4.0.0",
+    "@angular/compiler": "4.0.0",
+    "@angular/core": "4.0.0",
+    "@angular/forms": "2.1.2",
+    "@angular/http": "2.1.2",
+    "@angular/platform-browser": "4.0.0",
+    "@angular/platform-browser-dynamic": "4.0.0",
+    "@angular/router": "3.1.2",
+    "@angular/upgrade": "2.1.2",
+    "angular-in-memory-web-api": "0.1.13",
+    "angularfire2": "^4.0.0-rc.0",
+    "bootstrap": "4.0.0-alpha.5",
+    "core-js": "2.4.1",
+    "firebase": "^3.9.0",
+    "font-awesome": "^4.7.0",
+    "reflect-metadata": "0.1.8",
+    "rxjs": "5.0.1",
+    "systemjs": "0.19.40",
+    "zone.js": "0.6.26"
+  },
+  "devDependencies": {
+    "@angular/cli": "1.0.3",
+    "@types/core-js": "0.9.34",
+    "@types/node": "6.0.46",
+    "concurrently": "3.1.0",
+    "lite-server": "2.2.2",
+    "typescript": "2.0.6"
+  }
+}

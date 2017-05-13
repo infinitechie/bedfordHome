@@ -1,0 +1,34 @@
+.cost-of-cut{
+    color: #fff;
+}
+
+span {
+    color: #ccc;
+}
+
+.row {
+    text-align: center;
+}
+
+.btn-full {
+    float: none;
+    margin-top: 75px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    border-radius: 4px;
+}
+
+h1 {
+    font-size: 140%;
+}
+
+ .booking-box .btn-full {
+        padding-left: 45px;
+        padding-right: 45px;
+        font-size: 30px;
+    }
+
+    ul {
+        margin-top: 10px;
+    }
