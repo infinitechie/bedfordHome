@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-// import { AngularFireAuth } from 'angularfire2/auth';
 
 import *  as firebase from 'firebase';
 require('firebase/database');
 require('firebase/auth');
+require('firebase/storage')
 
 import  { FIREBASE_CONFIG } from '../constants/constants';
 
@@ -11,21 +11,29 @@ import  { FIREBASE_CONFIG } from '../constants/constants';
 export class FirebaseConfigService {
 
 
-    private _database: firebase.database.Database;
+    public _database: firebase.database.Database;
+    public _firebaseAuthRef : firebase.auth.Auth;
+    public storage: firebase.storage.Storage;
+    public storageUploadTask: firebase.storage.UploadTask;
+    public storageTask : firebase.storage.TaskEvent;
     
 
 
     constructor() {
         this.configureApp();
         this.configureDatabase();
-
+        this.configureAuth();
+        this.configureStorage();
     }
-
    
     
 //Data encapsulation (getters and setters)
     public get database() {
         return this._database;
+    }
+
+    public get auth() {
+        return this._firebaseAuthRef;
     }
 
     configureApp() {
@@ -36,10 +44,12 @@ export class FirebaseConfigService {
         this._database = firebase.database();
     }
 
+    configureAuth() {
+        this._firebaseAuthRef = firebase.auth();
+    }
 
-
-
-
-
+    configureStorage(){
+        this.storage = firebase.storage();
+    }
 
 }

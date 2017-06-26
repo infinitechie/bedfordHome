@@ -1,4 +1,4 @@
-import { Component, OnInit, trigger, state, style, transition, animate  } from '@angular/core';
+import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
 
 import {SharedService} from '../sharedService';
 
@@ -31,4 +31,12 @@ export class BookingConfirmComponent implements OnInit {
         this._sharedService.barberSelectedMain.subscribe(message => this.barberSelected = message);
         this._sharedService.cutSelectedMain.subscribe(message => this.cutSelected = message);
     }
+
+       sendDataToFirebase(){
+        
+        this._sharedService.passData('signUp');
+    }
+
+
+        
  }

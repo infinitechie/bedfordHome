@@ -1,7 +1,8 @@
- <ul *ngIf="serviceSelected=='date'" [@signal]="signal"> 
-                <h1>Pick your {{serviceSelected}}...</h1> 
+ <ul *ngIf="serviceSelected=='date'">
+     <!--[@signal]="signal" -->
+                <div class="row"><button class="backbtn" (click)="backToBarbers()"> <i class="fa fa-arrow-left" aria-hidden="true"></i> </button> <h1>Pick your {{serviceSelected}}...</h1></div> 
                 <hr>
-                <li *ngFor="let date of dates" (click)="passBarberSelectedData(date.date)"><span>{{date.date | date :'fullDate' }}</span><a class="btn btn-full" href="#">Book</a><span class="cost-of-cut"></span><br> <h4>Barber: {{barberSelectedToPass | capitalize}}</h4> </li>
+                <li *ngFor="let date of dates" (click)="passBarberSelectedData(date)"><span>{{date.date | date :'fullDate' }}</span><button class="button-num">Book</button><span class="cost-of-cut"></span><br> <h4>Barber: {{barberSelectedName | capitalize}}</h4> </li>
                
                 <!--<img src="resources/img/barber4.jpg" alt="">-->
 

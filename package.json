@@ -6,7 +6,8 @@
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "lite": "lite-server",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    "batch-server": "./node_modules/.bin/ts-node ./batch-server.ts"
   },
   "license": "UNLICENSED",
   "repository": {
@@ -14,23 +15,29 @@
     "url": ""
   },
   "dependencies": {
-    "@angular/common": "2.1.2",
-    "@angular/compiler": "2.1.2",
-    "@angular/core": "2.1.2",
-    "@angular/forms": "2.1.2",
-    "@angular/http": "2.1.2",
-    "@angular/platform-browser": "2.1.2",
-    "@angular/platform-browser-dynamic": "2.1.2",
-    "@angular/router": "3.1.2",
+    "@agm/core": "^1.0.0-beta.0",
+    "@angular/common": "~2.4.1",
+    "@angular/compiler": "~2.4.1",
+    "@angular/compiler-cli": "^2.4.1",
+    "@angular/core": "~2.4.1",
+    "@angular/forms": "~2.4.1",
+    "@angular/http": "~2.4.1",
+    "@angular/platform-browser": "~2.4.1",
+    "@angular/platform-browser-dynamic": "~2.4.1",
+    "@angular/platform-server": "^2.4.1",
+    "@angular/router": "~3.4.1",
     "@angular/upgrade": "2.1.2",
     "angular-in-memory-web-api": "0.1.13",
     "angularfire2": "^4.0.0-rc.0",
+    "blueimp-canvas-to-blob": "^3.8.0",
     "bootstrap": "4.0.0-alpha.5",
     "core-js": "2.4.1",
     "firebase": "^3.9.0",
     "font-awesome": "^4.7.0",
+    "ng2-img-tools": "^1.0.4",
     "reflect-metadata": "0.1.8",
     "rxjs": "5.0.0-beta.12",
+    "stripe": "^4.22.0",
     "systemjs": "0.19.40",
     "zone.js": "0.6.26"
   },
@@ -39,6 +46,7 @@
     "@types/node": "6.0.46",
     "concurrently": "3.1.0",
     "lite-server": "2.2.2",
+    "ts-node": "^3.0.4",
     "typescript": "2.0.6"
   }
 }

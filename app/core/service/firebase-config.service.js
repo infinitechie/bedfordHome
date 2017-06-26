@@ -9,15 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-// import { AngularFireAuth } from 'angularfire2/auth';
 var firebase = require('firebase');
 require('firebase/database');
 require('firebase/auth');
+require('firebase/storage');
 var constants_1 = require('../constants/constants');
 var FirebaseConfigService = (function () {
     function FirebaseConfigService() {
         this.configureApp();
         this.configureDatabase();
+        this.configureAuth();
+        this.configureStorage();
     }
     Object.defineProperty(FirebaseConfigService.prototype, "database", {
         //Data encapsulation (getters and setters)
@@ -27,11 +29,24 @@ var FirebaseConfigService = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(FirebaseConfigService.prototype, "auth", {
+        get: function () {
+            return this._firebaseAuthRef;
+        },
+        enumerable: true,
+        configurable: true
+    });
     FirebaseConfigService.prototype.configureApp = function () {
         firebase.initializeApp(constants_1.FIREBASE_CONFIG);
     };
     FirebaseConfigService.prototype.configureDatabase = function () {
         this._database = firebase.database();
+    };
+    FirebaseConfigService.prototype.configureAuth = function () {
+        this._firebaseAuthRef = firebase.auth();
+    };
+    FirebaseConfigService.prototype.configureStorage = function () {
+        this.storage = firebase.storage();
     };
     FirebaseConfigService = __decorate([
         core_1.Injectable(), 

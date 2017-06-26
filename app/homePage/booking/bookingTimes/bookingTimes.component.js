@@ -22,9 +22,13 @@ var BookingTimesComponent = (function () {
         this._sharedService.dateSelectedMain.subscribe(function (message) { return _this.date = message; });
         console.log(this.timesArray);
     };
-    BookingTimesComponent.prototype.passTimeData = function (time) {
-        this._sharedService.setTime(time);
+    BookingTimesComponent.prototype.passTimeData = function (booking) {
+        this._sharedService.setTime(booking.time);
         this._sharedService.passData("confirm");
+        this._sharedService.setTimeKey(booking.id);
+    };
+    BookingTimesComponent.prototype.backToDates = function () {
+        this._sharedService.passData("date");
     };
     BookingTimesComponent = __decorate([
         core_1.Component({

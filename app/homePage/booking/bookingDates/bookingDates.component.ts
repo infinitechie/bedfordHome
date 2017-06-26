@@ -12,14 +12,14 @@ import {ModelBookingTimes} from '../bookingTimes/model/bookingTimesModel';
     moduleId: module.id,
     selector: 'bookingDates',
     templateUrl: 'bookingDates.component.html',
-    styleUrls: ['bookingDates.component.css'], 
-     animations: [
-        trigger('signal', [
-            state('void', style({
-                'transform':'translateX(+110%)'
-        })),
-        transition('* => *', animate('.8s'))
-    ])]
+    styleUrls: ['bookingDates.component.css']
+    //  animations: [
+    //     trigger('signal', [
+    //         state('void', style({
+    //             'transform':'translateX(+110%)'
+    //     })),
+    //     transition('* => *', animate('.8s'))
+    // ])]
 
 })
 
@@ -29,6 +29,7 @@ export class BookingDatesComponent implements OnInit {
 
     public serviceSelected: string;
     public barberSelectedToPass="j"
+    public barberSelectedName = "";
 
     private bookings: ModelBookingDates[]  = [];
 
@@ -43,29 +44,32 @@ export class BookingDatesComponent implements OnInit {
         this.dates = this._sharedService.dateArray;
         this._sharedService.currentMessage.subscribe(message => this.serviceSelected = message);
         this._sharedService.currentMessage1.subscribe(message => this.barberSelectedToPass = message);
+        this._sharedService.barberSelectedMain.subscribe(message => this.barberSelectedName = message);
+        // this._sharedService.barberUID.subscribe(message => this.barberSelectedName = message);
         // console.log(this.barberSelectedToPass);
         
         
     }   
 
-    
-
-     passBarberSelectedData(dateSelected: string) {
+     passBarberSelectedData(date: ModelBookingDates) {
         
-        this.grabTimes(this.barberSelectedToPass, dateSelected);
-        this.passDateData(dateSelected);
-        this._sharedService.passData("time")
+        this.grabTimes(this.barberSelectedToPass,date.id);
+        this.passDateData(String(date.date));
+        this._sharedService.passData("time");
      }
 
     grabTimes(barberSelected: string, dateSelected: string){
+        console.log(barberSelected);
+        // var milliseconds = (new Date).getTime();
         this.bookingService.grabTimesArray(barberSelected, dateSelected)
+        
         .subscribe( booking => {
+
             this.timesArray.push(booking);
 
             this._sharedService.timeArray.push(booking);
-            booking = '';
-           
-
+            booking = "";
+            
         },
         err => {
             console.error("unable to add bug -", err);
@@ -78,6 +82,11 @@ export class BookingDatesComponent implements OnInit {
     this._sharedService.setDate(date);
    }
 
+
+backToBarbers(){
+    this._sharedService.passData("barber");
+
+}
 
 
 }

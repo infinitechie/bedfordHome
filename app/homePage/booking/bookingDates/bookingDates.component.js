@@ -16,6 +16,7 @@ var BookingDatesComponent = (function () {
         this.bookingService = bookingService;
         this._sharedService = _sharedService;
         this.barberSelectedToPass = "j";
+        this.barberSelectedName = "";
         this.bookings = [];
         this.dates = [];
         this.timesArray = [];
@@ -25,20 +26,24 @@ var BookingDatesComponent = (function () {
         this.dates = this._sharedService.dateArray;
         this._sharedService.currentMessage.subscribe(function (message) { return _this.serviceSelected = message; });
         this._sharedService.currentMessage1.subscribe(function (message) { return _this.barberSelectedToPass = message; });
+        this._sharedService.barberSelectedMain.subscribe(function (message) { return _this.barberSelectedName = message; });
+        // this._sharedService.barberUID.subscribe(message => this.barberSelectedName = message);
         // console.log(this.barberSelectedToPass);
     };
-    BookingDatesComponent.prototype.passBarberSelectedData = function (dateSelected) {
-        this.grabTimes(this.barberSelectedToPass, dateSelected);
-        this.passDateData(dateSelected);
+    BookingDatesComponent.prototype.passBarberSelectedData = function (date) {
+        this.grabTimes(this.barberSelectedToPass, date.id);
+        this.passDateData(String(date.date));
         this._sharedService.passData("time");
     };
     BookingDatesComponent.prototype.grabTimes = function (barberSelected, dateSelected) {
         var _this = this;
+        console.log(barberSelected);
+        // var milliseconds = (new Date).getTime();
         this.bookingService.grabTimesArray(barberSelected, dateSelected)
             .subscribe(function (booking) {
             _this.timesArray.push(booking);
             _this._sharedService.timeArray.push(booking);
-            booking = '';
+            booking = "";
         }, function (err) {
             console.error("unable to add bug -", err);
         });
@@ -47,19 +52,15 @@ var BookingDatesComponent = (function () {
     BookingDatesComponent.prototype.passDateData = function (date) {
         this._sharedService.setDate(date);
     };
+    BookingDatesComponent.prototype.backToBarbers = function () {
+        this._sharedService.passData("barber");
+    };
     BookingDatesComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'bookingDates',
             templateUrl: 'bookingDates.component.html',
-            styleUrls: ['bookingDates.component.css'],
-            animations: [
-                core_1.trigger('signal', [
-                    core_1.state('void', core_1.style({
-                        'transform': 'translateX(+110%)'
-                    })),
-                    core_1.transition('* => *', core_1.animate('.8s'))
-                ])]
+            styleUrls: ['bookingDates.component.css']
         }), 
         __metadata('design:paramtypes', [booking_service_1.BookingService, sharedService_1.SharedService])
     ], BookingDatesComponent);

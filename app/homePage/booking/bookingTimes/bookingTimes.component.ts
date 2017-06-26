@@ -37,9 +37,16 @@ export class BookingTimesComponent implements OnInit {
 
     }
 
-    passTimeData(time: string){
-        this._sharedService.setTime(time);
+    passTimeData(booking: ModelBookingTimes){
+        this._sharedService.setTime(booking.time);
         this._sharedService.passData("confirm");
+        this._sharedService.setTimeKey(booking.id);
+
     }
+
+    backToDates(){
+    this._sharedService.passData("date");
+
+}
 
  }

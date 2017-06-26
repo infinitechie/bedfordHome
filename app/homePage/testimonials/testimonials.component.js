@@ -9,8 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var platform_browser_1 = require('@angular/platform-browser');
 var TestimonialComponent = (function () {
-    function TestimonialComponent() {
+    function TestimonialComponent(sanitizer) {
+        this.sanitizer = sanitizer;
+        //   video: any = {id: 'wzrnuUOoFNM'};
+        this.baseUrl = "https://www.youtube.com/embed/TtEkYFQS5Uw?modestbranding=1&showinfo=0&autoplay=1";
+        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.baseUrl);
     }
     TestimonialComponent = __decorate([
         core_1.Component({
@@ -19,9 +24,23 @@ var TestimonialComponent = (function () {
             templateUrl: 'testimonials.component.html',
             styleUrls: ['testimonials.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [platform_browser_1.DomSanitizer])
     ], TestimonialComponent);
     return TestimonialComponent;
 }());
 exports.TestimonialComponent = TestimonialComponent;
+//  import {Component} from '@angular/core';
+// import {SafeResourceUrl, DomSanitizer} from '@angular/platform-browser';  
+// @Component({
+//     selector: 'testimonial',
+//     moduleId: module.id,
+//     templateUrl: 'testimonials.component.html',
+//     styleUrls: ['testimonials.component.css']
+// })
+// export class TestimonialComponent {
+//      url: SafeResourceUrl;
+//     constructor(sanitizer: DomSanitizer) {
+//         this.url = sanitizer.bypassSecurityTrustResourceUrl('https://youtube.com/embed/XHCVWWsQmUs');
+//     }
+//  }
 //# sourceMappingURL=testimonials.component.js.map

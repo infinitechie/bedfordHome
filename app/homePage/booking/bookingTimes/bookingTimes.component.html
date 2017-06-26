@@ -1,7 +1,7 @@
  <ul *ngIf="serviceSelected=='time'"> 
-                <h1>Pick your {{serviceSelected}}...</h1> 
+                <div class="row"><button class="backbtn" (click)="backToDates()"> <i class="fa fa-arrow-left" aria-hidden="true"></i> </button> <h1>Pick your {{serviceSelected}}...</h1></div> 
                 <hr>
-                <li *ngFor="let timeModel of timesArray" (click)="passTimeData(timeModel.time)"><span>{{timeModel.time}}</span><a class="btn btn-full" href="#">Book</a><span class="cost-of-cut"></span><br> <h4>{{ date | date :'fullDate' }}</h4> </li>
+                <li *ngFor="let timeModel of timesArray" (click)="passTimeData(timeModel)"><span>{{timeModel.time}}</span><button class="button-num">Book</button><span class="cost-of-cut"></span><br> <h4>{{ date | date :'fullDate' }}</h4> </li>
                
                 <!--<img src="resources/img/barber4.jpg" alt="">-->
 

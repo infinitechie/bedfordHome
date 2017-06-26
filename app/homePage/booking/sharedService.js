@@ -24,18 +24,50 @@ var SharedService = (function () {
         this.barberSelectedMain = this.BarberSelectedSourceMain.asObservable();
         this.CutSelectedSourceMain = new BehaviorSubject_1.BehaviorSubject('');
         this.cutSelectedMain = this.CutSelectedSourceMain.asObservable();
+        this.EmailSelectedSourceMain = new BehaviorSubject_1.BehaviorSubject('');
+        this.emailSelected = this.EmailSelectedSourceMain.asObservable();
+        this.CostSelectedSourceMain = new BehaviorSubject_1.BehaviorSubject(null);
+        this.cutCostSelected = this.CostSelectedSourceMain.asObservable();
+        this.TimeKeySelectedSourceMain = new BehaviorSubject_1.BehaviorSubject(null);
+        this.timeKeySelected = this.TimeKeySelectedSourceMain.asObservable();
+        this.DateKeySelectedSourceMain = new BehaviorSubject_1.BehaviorSubject(null);
+        this.dateKeySelected = this.DateKeySelectedSourceMain.asObservable();
+        this.barberIndictor = new BehaviorSubject_1.BehaviorSubject([""]);
+        this.barberIndexSelected = this.barberIndictor.asObservable();
+        this.barberUIDIndictor = new BehaviorSubject_1.BehaviorSubject([""]);
+        this.barberUIDSelected = this.barberUIDIndictor.asObservable();
+        this.PageIndexIndictor = new BehaviorSubject_1.BehaviorSubject("");
+        this.pageIndexSelected = this.PageIndexIndictor.asObservable();
+        this.individualBarberUIDSelected = new BehaviorSubject_1.BehaviorSubject("");
+        this.barberUID = this.individualBarberUIDSelected.asObservable();
         this.dataArray = [];
         this.dateArray = [];
         this.timeArray = [];
     }
+    SharedService.prototype.setIndividualUID = function (UID) {
+        this.individualBarberUIDSelected.next(UID);
+    };
+    SharedService.prototype.addToArray = function (barbersArray) {
+        this.barberIndictor.next(barbersArray);
+    };
+    SharedService.prototype.setBarberUIDS = function (barberUIDS) {
+        this.barberUIDIndictor.next(barberUIDS);
+    };
+    SharedService.prototype.deleteArray = function () {
+        this.barberIndictor.next([null]);
+    };
     SharedService.prototype.insertData = function (data) {
         this.dataArray.unshift(data);
+        // this.setArray(this.dataArray);
     };
     SharedService.prototype.insertDateData = function (data) {
         this.dateArray.unshift(data);
     };
     SharedService.prototype.insertTimeData = function (data) {
         this.timeArray.unshift(data);
+    };
+    SharedService.prototype.setIndex = function (index) {
+        this.PageIndexIndictor.next(index);
     };
     // Setting Selected Information down to bottom cut off
     SharedService.prototype.setDate = function (date) {
@@ -49,6 +81,18 @@ var SharedService = (function () {
     };
     SharedService.prototype.setCut = function (cut) {
         this.CutSelectedSourceMain.next(cut);
+    };
+    SharedService.prototype.setEmail = function (email) {
+        this.EmailSelectedSourceMain.next(email);
+    };
+    SharedService.prototype.setCost = function (cost) {
+        this.CostSelectedSourceMain.next(cost);
+    };
+    SharedService.prototype.setTimeKey = function (timeKey) {
+        this.TimeKeySelectedSourceMain.next(timeKey);
+    };
+    SharedService.prototype.setDateKey = function (dateKey) {
+        this.DateKeySelectedSourceMain.next(dateKey);
     };
     // Here is bottom cut off
     SharedService.prototype.passData = function (message) {

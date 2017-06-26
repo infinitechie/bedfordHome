@@ -24,6 +24,9 @@ var BookingConfirmComponent = (function () {
         this._sharedService.barberSelectedMain.subscribe(function (message) { return _this.barberSelected = message; });
         this._sharedService.cutSelectedMain.subscribe(function (message) { return _this.cutSelected = message; });
     };
+    BookingConfirmComponent.prototype.sendDataToFirebase = function () {
+        this._sharedService.passData('signUp');
+    };
     BookingConfirmComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
